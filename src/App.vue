@@ -1,27 +1,25 @@
 <template>
   <div id="app">
-    <FormCredidentials/>
-    <DatabaseList @changing-db="selectedDB = $event"/>
-    <PartitionList :db="selectedDB"/>
+    <DatabaseList @changing-db="selectedDB = $event" @update-creds="creds = $event"/>
+    <PartitionList :db="selectedDB" :creds="creds"/>
   </div>
 </template>
 
 <script>
 import DatabaseList from './components/DatabaseList.vue'
 import PartitionList from './components/PartitionList.vue'
-import FormCredidentials from './components/FormCredidentials.vue'
 
 export default {
   name: 'App',
   components: {
     DatabaseList,
     PartitionList,
-    FormCredidentials,
   },
   
   data() {
     return {
       selectedDB: null,
+      creds: null,
     }
   }
 }
